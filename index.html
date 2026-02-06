@@ -719,9 +719,11 @@
             <h1>📂 Pack 1: AI Prompts</h1>
             <p class="welcome-text">Access your 4,000+ prompt library and resources.</p>
             <div style="text-align:center; margin-bottom: 30px;">
-                <a href="https://drive.google.com/" target="_blank" class="generate-btn"
-                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
-                    GOOGLE DRIVE FOLDER</a>
+                <a href="#"
+                    onclick="alert('LINK MISSING: Please edit the HTML file and insert your specific Google Drive Folder Link for Pack 1.'); return false;"
+                    class="generate-btn"
+                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS PACK
+                    1 (Configure Link)</a>
             </div>
             <div class="grid">
                 <div class="card">
@@ -744,9 +746,11 @@
             <h1>📂 Pack 2: Social Media</h1>
             <p class="welcome-text">Templates, calendars, and viral content resources.</p>
             <div style="text-align:center; margin-bottom: 30px;">
-                <a href="https://drive.google.com/" target="_blank" class="generate-btn"
-                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
-                    GOOGLE DRIVE FOLDER</a>
+                <a href="#"
+                    onclick="alert('LINK MISSING: Please edit the HTML file and insert your specific Google Drive Folder Link for Pack 2.'); return false;"
+                    class="generate-btn"
+                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS PACK
+                    2 (Configure Link)</a>
             </div>
             <div class="grid">
                 <div class="card">
@@ -769,9 +773,11 @@
             <h1>📂 Pack 3: Educational</h1>
             <p class="welcome-text">Resources for teachers, educators, and course creators.</p>
             <div style="text-align:center; margin-bottom: 30px;">
-                <a href="https://drive.google.com/" target="_blank" class="generate-btn"
-                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
-                    GOOGLE DRIVE FOLDER</a>
+                <a href="#"
+                    onclick="alert('LINK MISSING: Please edit the HTML file and insert your specific Google Drive Folder Link for Pack 3.'); return false;"
+                    class="generate-btn"
+                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS PACK
+                    3 (Configure Link)</a>
             </div>
             <div class="grid">
                 <div class="card">
@@ -794,9 +800,11 @@
             <h1>👑 Exclusive Bonuses</h1>
             <p class="welcome-text">Premium strategies and guides for MEGA BUNDLE owners only.</p>
             <div style="text-align:center; margin-bottom: 30px;">
-                <a href="https://drive.google.com/" target="_blank" class="generate-btn"
+                <a href="#"
+                    onclick="alert('LINK MISSING: Please edit the HTML file and insert your specific Google Drive Folder Link for Bonuses.'); return false;"
+                    class="generate-btn"
                     style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
-                    GOOGLE DRIVE FOLDER</a>
+                    BONUSES (Configure Link)</a>
             </div>
             <div class="grid">
                 <div class="card">
@@ -845,8 +853,22 @@
         }
 
         // ========== PROMPT BUILDER ==========
+        // ========== ADVANCED PROMPT ENGINEER LOGIC ==========
+        const ROLE_DEFINITIONS = {
+            "Expert Copywriter": "Act as a World-Class Direct Response Copywriter with 20 years of experience. You specialize in high-converting copy, psychological triggers, and persuasive storytelling.",
+            "Senior Software Engineer": "Act as a Distinguished Software Architect. You have deep expertise in clean code, design patterns, algorithmic optimization, and scalable systems.",
+            "Marketing Strategist": "Act as a Chief Marketing Officer (CMO). You are an expert in full-funnel strategy, brand positioning, growth hacking, and market analysis.",
+            "Data Analyst": "Act as a Lead Data Scientist. You excel at statistical analysis, data visualization, identifying patterns, and driving business decisions through data.",
+            "Creative Writer": "Act as a Best-Selling Author. You have a mastery of narrative structure, character development, vivid imagery, and engaging prose.",
+            "Business Consultant": "Act as a MBB (McKinsey/Bain/BCG) level Management Consultant. You are an expert in problem-solving, corporate strategy, operational efficiency, and profitability.",
+            "SEO Specialist": "Act as a Senior SEO Strategist. You are an expert in technical SEO, keyword research, on-page optimization, and authority building.",
+            "Social Media Manager": "Act as a Viral Content Director. You understand algorithms, engagement metrics, community building, and trend analysis.",
+            "Teacher / Professor": "Act as a Tenured Professor and Pedagogy Expert. You are skilled in curriculum design, simplifying complex topics, and student engagement.",
+            "Financial Advisor": "Act as a Certified Financial Planner (CFP). You provide prudent, legally compliant, and strategic financial advice focused on wealth preservation and growth."
+        };
+
         function generatePrompt() {
-            const role = document.getElementById('role').value;
+            const roleKey = document.getElementById('role').value;
             const tone = document.getElementById('tone').value;
             const task = document.getElementById('task').value;
             const context = document.getElementById('context').value;
@@ -857,12 +879,33 @@
                 return;
             }
 
-            const prompt = `Act as a ${role}.\n\n` +
-                `TASK:\n${task}\n\n` +
-                `CONTEXT & CONSTRAINTS:\n${context || "No specific constraints."}\n\n` +
-                `TONE:\n${tone}\n\n` +
-                `OUTPUT FORMAT:\n${format}\n\n` +
-                `Take a deep breath and do this step-by-step to ensure high quality.`;
+            const roleDescription = ROLE_DEFINITIONS[roleKey] || `Act as a ${roleKey}.`;
+
+            // THE MEGA PROMPT STRUCTURE
+            const prompt =
+                `# SYSTEM ROLE
+${roleDescription}
+
+# YOUR TASK
+${task}
+
+# CONTEXT & CONSTRAINTS
+${context || "No specific constraints provided. Use your best professional judgment."}
+
+# TONE GUIDELINES
+Maintain a tone that is: ${tone}.
+Ensure the language is precise, impactful, and aligned with the persona above.
+
+# OUTPUT FORMAT
+${format}
+
+# CHAIN OF THOUGHT (Step-by-Step)
+1. Analyze the Request: Understand the core goal and target audience.
+2. Outline Strategy: Plan the structure of the response.
+3. Draft Content: Create the content using the specific tone and expertise required.
+4. Refine: Review against constraints and optimize for quality.
+
+Take a deep breath and start now.`;
 
             document.getElementById('promptOutput').value = prompt;
         }
