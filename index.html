@@ -4,29 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIGITAL EMPIRE OS | v4.0 Quantum</title>
+    <title>DIGITAL EMPIRE OS | v5.0 ULTIMATE</title>
+    <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        dark: '#050505',
-                        card: '#0A0A0A',
-                        border: '#1F1F1F',
-                        primary: '#a855f7', // Purple
-                        accent: '#f59e0b',  // Gold
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Space Grotesk', 'monospace'],
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { colors: { dark: '#050505', card: '#0A0A0A', border: '#1F1F1F', primary: '#a855f7', accent: '#f59e0b' }, fontFamily: { sans: ['Inter', 'sans-serif'], mono: ['Space Grotesk', 'monospace'] } } } }
     </script>
     <style>
         body {
@@ -40,39 +26,16 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .gradient-text {
-            background: linear-gradient(to right, #f59e0b, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .menu-item.active {
+            background: linear-gradient(90deg, rgba(168, 85, 247, 0.1), transparent);
+            border-left: 2px solid #a855f7;
+            color: white;
         }
 
-        .glow:hover {
-            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
-            border-color: #a855f7;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-
-        .sidebar-item.active {
-            border-left: 3px solid #f59e0b;
-            background: linear-gradient(90deg, rgba(245, 158, 11, 0.1), transparent);
-            color: #fff;
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -80,415 +43,116 @@
 <body class="flex h-screen overflow-hidden">
 
     <!-- SIDEBAR -->
-    <aside class="w-64 bg-black border-r border-[#1F1F1F] flex flex-col justify-between hidden md:flex">
-        <div>
-            <div class="p-6">
-                <h1 class="font-mono text-2xl font-bold tracking-tighter gradient-text">EMPIRE OS <span
-                        class="text-xs text-gray-500 block">v4.0 QUANTUM</span></h1>
-            </div>
-
-            <nav class="mt-4 space-y-1">
-                <a onclick="switchTab('dashboard')"
-                    class="sidebar-item active block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
-                    📊 Command Center
-                </a>
-                <a onclick="switchTab('search')"
-                    class="sidebar-item block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
-                    🔍 Smart Search <span class="bg-primary/20 text-primary text-[10px] px-1 rounded ml-2">NEW</span>
-                </a>
-                <a onclick="switchTab('lab')"
-                    class="sidebar-item block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
-                    🧪 AI Prompt Lab
-                </a>
-                <a onclick="switchTab('studio')"
-                    class="sidebar-item block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
-                    🎨 Visual Studio
-                </a>
-
-                <div class="px-6 py-4 mt-4">
-                    <p class="text-xs font-bold text-gray-600 uppercase tracking-widest mb-2">Libraries</p>
-                    <a href="https://drive.google.com/open?id=1kGFg1Br6g87SoSqPISnzM7xko8AZKA5-" target="_blank"
-                        class="block py-2 text-sm text-gray-400 hover:text-white">🤖 AI Prompts (15M)</a>
-                    <a href="https://drive.google.com/open?id=1n30js_39wYzuddhM1-a6vtorfyZz7hNQ" target="_blank"
-                        class="block py-2 text-sm text-gray-400 hover:text-white">📱 Social Media (17M)</a>
-                    <a href="https://drive.google.com/open?id=1P92PpSc2S6aRIZMiklceYYLkWZ_w7jOX" target="_blank"
-                        class="block py-2 text-sm text-gray-400 hover:text-white">🎓 Education (5M)</a>
-                    <a href="https://drive.google.com/open?id=1CZ8QvqQl2MqcWXzSbvZfwEcaQ54bgKxZ" target="_blank"
-                        class="block py-2 text-sm text-gray-400 hover:text-white">👑 VIP Bonuses</a>
-                </div>
-            </nav>
+    <aside class="w-64 bg-black border-r border-[#1F1F1F] flex flex-col hidden md:flex">
+        <div class="p-6">
+            <h1
+                class="font-mono text-xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
+                EMPIRE OS <span class="text-xs text-gray-500 block">v5.0 ULTIMATE</span></h1>
         </div>
 
-        <div class="p-6 border-t border-[#1F1F1F]">
-            <button onclick="toggleZenMode()"
-                class="flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors">
-                👁️ Zen Mode
-            </button>
-        </div>
+        <nav class="mt-2 space-y-1">
+            <a onclick="loadApp('dashboard')"
+                class="menu-item active block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
+                📊 Command Center
+            </a>
+
+            <p class="px-6 mt-6 mb-2 text-[10px] font-bold text-gray-600 uppercase tracking-widest">Applications</p>
+            <a onclick="loadApp('promptlab')"
+                class="menu-item block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
+                🧪 Prompt Engineer
+            </a>
+            <a onclick="loadApp('studio')"
+                class="menu-item block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
+                🎨 Canvas Studio
+            </a>
+            <a onclick="loadApp('fintech')"
+                class="menu-item block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
+                📈 ROI Modeler
+            </a>
+
+            <p class="px-6 mt-6 mb-2 text-[10px] font-bold text-gray-600 uppercase tracking-widest">Storage</p>
+            <a href="https://drive.google.com/open?id=1kGFg1Br6g87SoSqPISnzM7xko8AZKA5-" target="_blank"
+                class="block px-6 py-2 text-sm text-gray-400 hover:text-white">🤖 AI Database (15M)</a>
+            <a href="https://drive.google.com/open?id=1n30js_39wYzuddhM1-a6vtorfyZz7hNQ" target="_blank"
+                class="block px-6 py-2 text-sm text-gray-400 hover:text-white">📱 Social Assets (17M)</a>
+            <a href="https://drive.google.com/open?id=1P92PpSc2S6aRIZMiklceYYLkWZ_w7jOX" target="_blank"
+                class="block px-6 py-2 text-sm text-gray-400 hover:text-white">🎓 Edu Resources (5M)</a>
+        </nav>
     </aside>
 
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 overflow-y-auto bg-dark relative" id="main-container">
-
-        <!-- TOP BAR -->
-        <header
-            class="h-16 border-b border-[#1F1F1F] flex items-center justify-between px-8 bg-black/50 backdrop-blur sticky top-0 z-50">
-            <div class="flex items-center gap-4">
-                <button class="md:hidden text-white">☰</button>
-                <div class="relative">
-                    <input type="text" placeholder="Search 52M+ assets..."
-                        class="bg-[#111] border border-[#333] rounded-full py-2 px-10 text-sm w-64 focus:w-96 transition-all focus:border-accent text-white outline-none"
-                        id="global-search">
-                    <span class="absolute left-4 top-2.5 text-gray-500">🔍</span>
-                </div>
-            </div>
-            <div class="flex items-center gap-4">
-                <span
-                    class="px-3 py-1 rounded-full bg-green-500/10 text-green-500 text-xs font-bold border border-green-500/20">●
-                    SYSTEM ONLINE</span>
-                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-accent to-primary"></div>
-            </div>
-        </header>
-
-        <!-- DASHBOARD VIEW -->
-        <div id="view-dashboard" class="p-8 space-y-8 animate-fade-in">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Stat Cards -->
-                <div class="glass p-6 rounded-2xl glow transition-all">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <p class="text-gray-500 text-sm font-mono">TOTAL ASSETS</p>
-                            <h2 class="text-4xl font-bold mt-2 text-white">52.5M<span
-                                    class="text-accent text-lg">+</span></h2>
-                        </div>
-                        <div class="p-2 bg-accent/10 rounded-lg text-accent">📦</div>
-                    </div>
-                </div>
-                <div class="glass p-6 rounded-2xl glow transition-all">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <p class="text-gray-500 text-sm font-mono">TOOLS ACTIVE</p>
-                            <h2 class="text-4xl font-bold mt-2 text-white">3<span
-                                    class="text-gray-600 text-lg">/3</span></h2>
-                        </div>
-                        <div class="p-2 bg-primary/10 rounded-lg text-primary">🛠️</div>
-                    </div>
-                </div>
-                <div class="glass p-6 rounded-2xl glow transition-all">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <p class="text-gray-500 text-sm font-mono">LICENSE ESTIMATE</p>
-                            <h2 class="text-4xl font-bold mt-2 text-white">$12k<span
-                                    class="text-xs text-gray-500 ml-1">VALUE</span></h2>
-                        </div>
-                        <div class="p-2 bg-green-500/10 rounded-lg text-green-500">💰</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Quick Actions -->
-                <div class="glass p-8 rounded-2xl border-l-4 border-accent">
-                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><span class="text-2xl">⚡</span> Quick
-                        Launch</h3>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button onclick="switchTab('lab')"
-                            class="p-4 bg-[#111] hover:bg-[#1a1a1a] rounded-xl text-left transition-all border border-transparent hover:border-gray-700 group">
-                            <span class="text-2xl mb-2 block group-hover:scale-110 transition-transform">🤖</span>
-                            <span class="font-bold text-white block">Prompt Engineer</span>
-                            <span class="text-xs text-gray-500">Test & Iterate Scripts</span>
-                        </button>
-                        <button onclick="switchTab('studio')"
-                            class="p-4 bg-[#111] hover:bg-[#1a1a1a] rounded-xl text-left transition-all border border-transparent hover:border-gray-700 group">
-                            <span class="text-2xl mb-2 block group-hover:scale-110 transition-transform">📢</span>
-                            <span class="font-bold text-white block">Headline Visualizer</span>
-                            <span class="text-xs text-gray-500">Create Social Headers</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Updates Feed -->
-                <div class="glass p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-6">📡 System Updates</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4 text-sm">
-                            <span class="text-green-500 font-mono text-xs">[NEW]</span>
-                            <span class="text-gray-300">Added "Course ROI Calculator" v2.0</span>
-                        </div>
-                        <div class="flex items-center gap-4 text-sm">
-                            <span class="text-accent font-mono text-xs">[UPD]</span>
-                            <span class="text-gray-300">15M Prompts Indexed for Smart Search</span>
-                        </div>
-                        <div class="flex items-center gap-4 text-sm">
-                            <span class="text-primary font-mono text-xs">[TIP]</span>
-                            <span class="text-gray-300">Use "Zen Mode" for distraction-free writing</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- MAIN VIEWER -->
+    <main class="flex-1 bg-dark relative flex flex-col">
+        <!-- IFRAME CONTAINER to load the other apps inside -->
+        <div id="app-container" class="flex-1 relative">
+            <iframe id="frame-dashboard" src="about:blank" class="absolute inset-0 w-full h-full"></iframe>
         </div>
-
-        <!-- SEARCH VIEW (NEW) -->
-        <div id="view-search" class="p-8 hidden">
-            <h2 class="text-3xl font-bold mb-6">🔍 Smart Asset Finder</h2>
-            <div class="glass p-8 rounded-2xl min-h-[500px]">
-                <input type="text" placeholder="Type a niche (e.g., 'Real Estate', 'Yoga', 'Crypto')..."
-                    id="search-input"
-                    class="w-full bg-black border border-gray-800 p-4 rounded-xl text-xl text-white focus:border-accent outline-none mb-8">
-
-                <div id="search-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Results injected here -->
-                    <div class="text-center col-span-full py-20 text-gray-600">
-                        Start typing to search through 52 Million assets...
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- AI PROMPT LAB VIEW (NEW) -->
-        <div id="view-lab" class="p-0 h-full flex flex-col hidden">
-            <div class="h-16 border-b border-gray-800 flex items-center px-8 justify-between bg-black">
-                <h3 class="font-mono text-accent">AI PROMPT LABORATORY</h3>
-                <div class="text-xs text-gray-500">SESSION ID: <span id="session-id">8X-92</span></div>
-            </div>
-            <div class="flex-1 flex overflow-hidden">
-                <!-- Controls -->
-                <div class="w-80 bg-[#0A0A0A] border-r border-gray-800 p-6 overflow-y-auto">
-                    <label class="block text-xs font-bold text-gray-500 mb-2">ROLE</label>
-                    <select id="lab-role"
-                        class="w-full bg-[#111] text-white p-3 rounded-lg border border-gray-800 mb-4 focus:border-primary outline-none">
-                        <option>Expert Copywriter</option>
-                        <option>Senior Developer</option>
-                        <option>Digital Marketer</option>
-                        <option>Legal Consultant</option>
-                    </select>
-
-                    <label class="block text-xs font-bold text-gray-500 mb-2">FRAMEWORK</label>
-                    <select id="lab-framework"
-                        class="w-full bg-[#111] text-white p-3 rounded-lg border border-gray-800 mb-4 focus:border-primary outline-none">
-                        <option value="cot">Chain of Thought (Step-by-Step)</option>
-                        <option value="fewshot">Few-Shot (Examples)</option>
-                        <option value="pas">PAS (Problem-Agitate-Solution)</option>
-                        <option value="aida">AIDA (Attention-Interest-Desire-Action)</option>
-                    </select>
-
-                    <label class="block text-xs font-bold text-gray-500 mb-2">TASK / TOPIC</label>
-                    <textarea id="lab-topic"
-                        class="w-full bg-[#111] text-white p-3 rounded-lg border border-gray-800 h-32 focus:border-primary outline-none resize-none"
-                        placeholder="E.g., Write a sales page for a yoga mat..."></textarea>
-
-                    <button onclick="generateLabPrompt()"
-                        class="w-full mt-6 bg-gradient-to-r from-primary to-blue-600 py-3 rounded-lg font-bold hover:opacity-90 transition-opacity">✨
-                        COMPILE PROMPT</button>
-                </div>
-
-                <!-- Output -->
-                <div class="flex-1 bg-[#050505] p-8 overflow-y-auto">
-                    <div class="glass p-6 rounded-xl border border-gray-800 h-full flex flex-col">
-                        <div class="flex justify-between mb-4">
-                            <span class="text-xs text-gray-500">COMPILED OUTPUT</span>
-                            <button onclick="copyLab()" class="text-xs text-primary hover:text-white">COPY
-                                CLIPBOARD</button>
-                        </div>
-                        <textarea id="lab-output"
-                            class="w-full h-full bg-transparent text-gray-300 font-mono text-sm outline-none resize-none"
-                            placeholder="Your engineered prompt will appear here ready to copy..."></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- VISUAL STUDIO VIEW (NEW) -->
-        <div id="view-studio" class="p-8 hidden h-full flex flex-col">
-            <h2 class="text-3xl font-bold mb-6">🎨 Visual Headline Studio</h2>
-            <div class="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Controls -->
-                <div class="glass p-8 rounded-2xl h-fit">
-                    <label class="block text-xs font-bold text-gray-500 mb-2">HEADLINE TEXT</label>
-                    <input type="text" id="studio-text" value="DIGITAL EMPIRE 2026" oninput="updateStudio()"
-                        class="w-full bg-black border border-gray-800 p-3 rounded-lg text-white mb-4">
-
-                    <label class="block text-xs font-bold text-gray-500 mb-2">SUBTITLE</label>
-                    <input type="text" id="studio-sub" value="All-in-One Dashboard" oninput="updateStudio()"
-                        class="w-full bg-black border border-gray-800 p-3 rounded-lg text-white mb-4">
-
-                    <div class="grid grid-cols-2 gap-4 mb-6">
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 mb-2">COLOR THEME</label>
-                            <select id="studio-color" onchange="updateStudio()"
-                                class="w-full bg-black border border-gray-800 p-3 rounded-lg text-white">
-                                <option value="gold">Gold Luxury</option>
-                                <option value="neon">Neon Cyber</option>
-                                <option value="minimal">Clean Minimal</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-gray-500 mb-2">PLATFORM</label>
-                            <select id="studio-size" onchange="updateStudio()"
-                                class="w-full bg-black border border-gray-800 p-3 rounded-lg text-white">
-                                <option value="ig">Instagram Post</option>
-                                <option value="story">IG Story</option>
-                                <option value="linkedin">LinkedIn Header</option>
-                            </select>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-500 italic">This is a preview. To export high-res, use the Social Media
-                        Kit files.</p>
-                </div>
-
-                <!-- Preview Canvas -->
-                <div class="bg-black border border-dashed border-gray-700 rounded-2xl flex items-center justify-center p-8 relative overflow-hidden"
-                    id="studio-canvas">
-                    <!-- Dynamic Content -->
-                    <div id="preview-box" class="text-center relative z-10 transition-all duration-500">
-                        <h1 id="p-title"
-                            class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 mb-2 font-mono">
-                            DIGITAL EMPIRE 2026</h1>
-                        <p id="p-sub" class="text-xl text-gray-400 font-light tracking-widest">All-in-One Dashboard</p>
-                    </div>
-
-                    <!-- BG Effects -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-purple-900/20 to-black z-0"></div>
-                </div>
-            </div>
-        </div>
-
     </main>
 
     <script>
-        // NAVIGATION SYSTEM
-        function switchTab(tabId) {
-            ['dashboard', 'search', 'lab', 'studio'].forEach(id => {
-                document.getElementById('view-' + id).classList.add('hidden');
-            });
-            document.getElementById('view-' + tabId).classList.remove('hidden');
+        // URLs for the sub-apps (deployed on GitHub Pages)
+        // NOTE: In local dev, we might simulate this content. For production, we point to the URLs.
+        // Since we are updating everything, we can put the "Command Center" content directly here
+        // and load the others via iframe or dynamic HTML.
 
-            // Update sidebar active state
-            document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
-            // Simply adding active class to the clicked one would require event propagation or ID matching
-            // For now, this is a basic switch
-        }
+        const APPS = {
+            'dashboard': 'INTERNAL', // Dashboard is rendered here
+            'promptlab': 'https://juanez19982016-bit.github.io/dashboard-ai-prompts/',
+            'studio': 'https://juanez19982016-bit.github.io/dashboard-social-media/',
+            'fintech': 'https://juanez19982016-bit.github.io/dashboard-educational/'
+        };
 
-        // ZEN MODE
-        function toggleZenMode() {
-            const nav = document.querySelector('aside');
-            const header = document.querySelector('header');
-            if (nav.classList.contains('hidden')) {
-                nav.classList.remove('hidden');
-                header.classList.remove('hidden');
-            } else {
-                nav.classList.add('hidden');
-                header.classList.add('hidden');
-            }
-        }
+        function loadApp(appId) {
+            const container = document.getElementById('app-container');
 
-        // MOCKED SEARCH SYSTEM (SIMULATING 15M ASSETS)
-        const mockData = [
-            { title: "Real Estate Listing Generator", type: "AI Prompt", tags: "Real Estate, Sales" },
-            { title: "Yoga 30-Day Calendar", type: "Social Media", tags: "Fitness, Health" },
-            { title: "Course ROI Calculator", type: "Tool", tags: "Education, Business" },
-            { title: "Crypto Trading Journal", type: "Planner", tags: "Finance, Crypto" },
-            { title: "Lash Tech Booking Policy", type: "Template", tags: "Beauty, Service" },
-            { title: "SaaS Email Sequence", type: "AI Prompt", tags: "Marketing, Tech" },
-            { title: "Bakery Menu Template", type: "Social Media", tags: "Food, Local Business" },
-            { title: "Classroom Behavior Tracker", type: "Education", tags: "Teaching, School" }
-        ];
+            // Highlight Menu
+            document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
 
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const val = e.target.value.toLowerCase();
-            const container = document.getElementById('search-results');
+            if (appId === 'dashboard') {
+                container.innerHTML = `
+                <div class="p-10 h-full overflow-y-auto">
+                    <header class="flex justify-between items-center mb-10">
+                        <div>
+                            <h2 class="text-3xl font-bold text-white mb-1">Welcome back, Admin.</h2>
+                            <p class="text-gray-500">System is running at 100% capacity.</p>
+                        </div>
+                        <div class="px-4 py-2 bg-accent/10 text-accent rounded-full border border-accent/20 font-bold text-xs">
+                            ● 52,500,000 ASSETS ONLINE
+                        </div>
+                    </header>
 
-            if (val.length < 2) {
-                container.innerHTML = '<div class="text-center col-span-full py-20 text-gray-600">Start typing to search...</div>';
-                return;
-            }
-
-            // Simulate "Smart Search"
-            let html = '';
-            // 1. Exact matches from mock
-            const filtered = mockData.filter(item => item.title.toLowerCase().includes(val) || item.tags.toLowerCase().includes(val));
-
-            filtered.forEach(item => {
-                html += `
-                <div class="glass p-4 rounded-xl border border-gray-800 hover:border-accent cursor-pointer transition-all group">
-                    <div class="text-xs text-primary mb-1 uppercase tracking-wider">${item.type}</div>
-                    <h4 class="font-bold text-white group-hover:text-accent">${item.title}</h4>
-                    <div class="mt-4 flex justify-between items-center">
-                        <span class="text-xs text-gray-500">${item.tags}</span>
-                        <span class="text-xs bg-white/10 px-2 py-1 rounded">ACCESS →</span>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                       <div onclick="loadApp('promptlab')" class="glass p-8 rounded-2xl hover:border-blue-500 cursor-pointer transition-all group">
+                           <div class="w-12 h-12 rounded bg-blue-500/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🧪</div>
+                           <h3 class="font-bold text-white text-lg">Prompt Engineer</h3>
+                           <p class="text-sm text-gray-500 mt-2">Design complex AI pormpts with frameworks.</p>
+                       </div>
+                       <div onclick="loadApp('studio')" class="glass p-8 rounded-2xl hover:border-rose-500 cursor-pointer transition-all group">
+                           <div class="w-12 h-12 rounded bg-rose-500/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🎨</div>
+                           <h3 class="font-bold text-white text-lg">Canvas Studio</h3>
+                           <p class="text-sm text-gray-500 mt-2">Create viral social media visuals instantly.</p>
+                       </div>
+                       <div onclick="loadApp('fintech')" class="glass p-8 rounded-2xl hover:border-emerald-500 cursor-pointer transition-all group">
+                           <div class="w-12 h-12 rounded bg-emerald-500/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">📈</div>
+                           <h3 class="font-bold text-white text-lg">ROI Modeler</h3>
+                           <p class="text-sm text-gray-500 mt-2">Project course revenue and profit scenarios.</p>
+                       </div>
+                    </div>
+                    
+                    <div class="glass p-8 rounded-2xl border-l-4 border-yellow-500">
+                        <h3 class="font-bold text-white mb-4">🚀 Quick Search</h3>
+                        <input type="text" placeholder="Search across all databases..." class="w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-yellow-500">
+                        <p class="text-xs text-gray-500 mt-4">Indexing 52.5M files...</p>
                     </div>
                 </div>`;
-            });
-
-            // 2. Generate "AI Suggestions" if no matches
-            if (filtered.length === 0) {
-                html = `
-                <div class="col-span-full text-center py-10">
-                    <p class="text-gray-400 mb-4">Searching 15M+ database for "${val}"...</p>
-                    <button class="bg-accent text-black px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform">
-                        🤖 Ask AI to Generate "${val}" Assets
-                    </button>
-                </div>`;
-            }
-
-            container.innerHTML = html;
-        });
-
-        // PROMPT LAB LOGIC
-        function generateLabPrompt() {
-            const role = document.getElementById('lab-role').value;
-            const framework = document.getElementById('lab-framework').value;
-            const topic = document.getElementById('lab-topic').value;
-
-            let template = "";
-            if (framework === 'cot') template = "Think through this step-by-step. 1. Analyze the context. 2. Outline the strategy. 3. Draft the content.";
-            if (framework === 'pas') template = "Structure the response using the Problem-Agitate-Solution framework.";
-
-            const prompt = `ACT AS A: ${role}\n\nTASK: ${topic}\n\nINSTRUCTION: ${template}\n\nFORMAT: Professional, Actionable, Detailed.`;
-
-            // Typewriter effect
-            const output = document.getElementById('lab-output');
-            output.value = "";
-            let i = 0;
-            const timer = setInterval(() => {
-                output.value += prompt.charAt(i);
-                i++;
-                if (i >= prompt.length) clearInterval(timer);
-            }, 10);
-        }
-
-        function copyLab() {
-            const copyText = document.getElementById("lab-output");
-            copyText.select();
-            document.execCommand("copy");
-            alert("Prompt Copied to Clipboard!");
-        }
-
-        // VISUAL STUDIO LOGIC
-        function updateStudio() {
-            const text = document.getElementById('studio-text').value;
-            const sub = document.getElementById('studio-sub').value;
-            const theme = document.getElementById('studio-color').value;
-
-            const titleEl = document.getElementById('p-title');
-            const subEl = document.getElementById('p-sub');
-            const canvas = document.getElementById('studio-canvas');
-
-            titleEl.innerText = text;
-            subEl.innerText = sub;
-
-            // Theme Logic
-            if (theme === 'gold') {
-                titleEl.className = "text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600 mb-2 font-mono";
-                canvas.style.fontFamily = "'Space Grotesk', monospace";
-            } else if (theme === 'neon') {
-                titleEl.className = "text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-cyan-500 mb-2 font-sans";
-                canvas.style.fontFamily = "'Inter', sans-serif";
-            } else { // minimal
-                titleEl.className = "text-5xl font-bold text-white mb-2 font-sans tracking-tight";
-                canvas.style.fontFamily = "sans-serif";
+            } else {
+                // Load External App via Iframe
+                container.innerHTML = `<iframe src="${APPS[appId]}" class="w-full h-full border-0"></iframe>`;
             }
         }
+
+        // Init
+        loadApp('dashboard');
     </script>
 </body>
 
