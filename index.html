@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIGITAL EMPIRE OS | v5.0 ULTIMATE</title>
+    <title>DIGITAL EMPIRE OS | v7.0 ULTIMATE</title>
     <!-- Fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap"
@@ -37,6 +37,28 @@
             width: 100%;
             height: 100%;
         }
+
+        /* Loader */
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #FFF;
+            border-bottom-color: #a855f7;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -47,7 +69,7 @@
         <div class="p-6">
             <h1
                 class="font-mono text-xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-accent to-primary">
-                EMPIRE OS <span class="text-xs text-gray-500 block">v5.0 ULTIMATE</span></h1>
+                EMPIRE OS <span class="text-xs text-gray-500 block">v7.0 ULTIMATE</span></h1>
         </div>
 
         <nav class="mt-2 space-y-1">
@@ -63,11 +85,11 @@
             </a>
             <a onclick="loadApp('studio')"
                 class="menu-item block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
-                🎨 Canvas Studio
+                🎨 Batch Engine (v7)
             </a>
             <a onclick="loadApp('fintech')"
                 class="menu-item block px-6 py-3 text-sm text-gray-400 hover:text-white cursor-pointer transition-all">
-                📈 ROI Modeler
+                📈 ROI Modeler (PDF)
             </a>
 
             <p class="px-6 mt-6 mb-2 text-[10px] font-bold text-gray-600 uppercase tracking-widest">Storage</p>
@@ -82,26 +104,40 @@
 
     <!-- MAIN VIEWER -->
     <main class="flex-1 bg-dark relative flex flex-col">
-        <!-- IFRAME CONTAINER to load the other apps inside -->
+        <div id="loading-overlay" class="absolute inset-0 bg-black z-50 flex items-center justify-center hidden">
+            <div class="text-center">
+                <span class="loader mb-4"></span>
+                <p class="text-xs text-gray-500 font-mono animate-pulse">BOOTING MODULE...</p>
+            </div>
+        </div>
+
+        <!-- IFRAME CONTAINER -->
         <div id="app-container" class="flex-1 relative">
             <iframe id="frame-dashboard" src="about:blank" class="absolute inset-0 w-full h-full"></iframe>
         </div>
     </main>
 
     <script>
-        // URLs for the sub-apps (deployed on GitHub Pages)
-        // NOTE: In local dev, we might simulate this content. For production, we point to the URLs.
-        // Since we are updating everything, we can put the "Command Center" content directly here
-        // and load the others via iframe or dynamic HTML.
-
+        // Cache Busting via Timestamp
+        const TS = Date.now();
         const APPS = {
-            'dashboard': 'INTERNAL', // Dashboard is rendered here
-            'promptlab': 'https://juanez19982016-bit.github.io/dashboard-ai-prompts/',
-            'studio': 'https://juanez19982016-bit.github.io/dashboard-social-media/',
-            'fintech': 'https://juanez19982016-bit.github.io/dashboard-educational/'
+            'dashboard': 'INTERNAL',
+            'promptlab': 'https://juanez19982016-bit.github.io/dashboard-ai-prompts/?v=' + TS,
+            'studio': 'https://juanez19982016-bit.github.io/dashboard-social-media/?v=' + TS,
+            'fintech': 'https://juanez19982016-bit.github.io/dashboard-educational/?v=' + TS
         };
 
+        function showLoader() {
+            document.getElementById('loading-overlay').classList.remove('hidden');
+        }
+        function hideLoader() {
+            setTimeout(() => {
+                document.getElementById('loading-overlay').classList.add('hidden');
+            }, 800); // Artificial delay to feel "technical"
+        }
+
         function loadApp(appId) {
+            showLoader();
             const container = document.getElementById('app-container');
 
             // Highlight Menu
@@ -110,49 +146,50 @@
 
             if (appId === 'dashboard') {
                 container.innerHTML = `
-                <div class="p-10 h-full overflow-y-auto">
+                <div class="p-10 h-full overflow-y-auto fade-in">
                     <header class="flex justify-between items-center mb-10">
                         <div>
                             <h2 class="text-3xl font-bold text-white mb-1">Welcome back, Admin.</h2>
                             <p class="text-gray-500">System is running at 100% capacity.</p>
                         </div>
-                        <div class="px-4 py-2 bg-accent/10 text-accent rounded-full border border-accent/20 font-bold text-xs">
+                        <div class="px-4 py-2 bg-accent/10 text-accent rounded-full border border-accent/20 font-bold text-xs animate-pulse">
                             ● 52,500,000 ASSETS ONLINE
                         </div>
                     </header>
 
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-                       <div onclick="loadApp('promptlab')" class="glass p-8 rounded-2xl hover:border-blue-500 cursor-pointer transition-all group">
+                       <div onclick="loadApp('promptlab')" class="glass p-8 rounded-2xl hover:border-blue-500 cursor-pointer transition-all group relative overflow-hidden">
                            <div class="w-12 h-12 rounded bg-blue-500/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🧪</div>
                            <h3 class="font-bold text-white text-lg">Prompt Engineer</h3>
-                           <p class="text-sm text-gray-500 mt-2">Design complex AI pormpts with frameworks.</p>
+                           <p class="text-sm text-gray-500 mt-2">IDE with Persistence.</p>
                        </div>
-                       <div onclick="loadApp('studio')" class="glass p-8 rounded-2xl hover:border-rose-500 cursor-pointer transition-all group">
+                       <div onclick="loadApp('studio')" class="glass p-8 rounded-2xl hover:border-rose-500 cursor-pointer transition-all group relative overflow-hidden">
                            <div class="w-12 h-12 rounded bg-rose-500/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">🎨</div>
-                           <h3 class="font-bold text-white text-lg">Canvas Studio</h3>
-                           <p class="text-sm text-gray-500 mt-2">Create viral social media visuals instantly.</p>
+                           <h3 class="font-bold text-white text-lg">Content Batch Engine</h3>
+                           <p class="text-sm text-gray-500 mt-2">Create 6 designs instantly.</p>
+                           <div class="absolute top-4 right-4 bg-rose-500 text-white text-[10px] font-bold px-2 py-0.5 rounded">NEW v7.0</div>
                        </div>
-                       <div onclick="loadApp('fintech')" class="glass p-8 rounded-2xl hover:border-emerald-500 cursor-pointer transition-all group">
+                       <div onclick="loadApp('fintech')" class="glass p-8 rounded-2xl hover:border-emerald-500 cursor-pointer transition-all group relative overflow-hidden">
                            <div class="w-12 h-12 rounded bg-emerald-500/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">📈</div>
                            <h3 class="font-bold text-white text-lg">ROI Modeler</h3>
-                           <p class="text-sm text-gray-500 mt-2">Project course revenue and profit scenarios.</p>
+                           <p class="text-sm text-gray-500 mt-2">PDF Report Generation.</p>
                        </div>
                     </div>
                     
                     <div class="glass p-8 rounded-2xl border-l-4 border-yellow-500">
                         <h3 class="font-bold text-white mb-4">🚀 Quick Search</h3>
-                        <input type="text" placeholder="Search across all databases..." class="w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-yellow-500">
-                        <p class="text-xs text-gray-500 mt-4">Indexing 52.5M files...</p>
+                        <input type="text" placeholder="Search across all databases..." class="w-full bg-black border border-gray-800 p-4 rounded-xl text-white outline-none focus:border-yellow-500" onkeyup="if(event.key==='Enter') window.open('https://drive.google.com/open?id=1kGFg1Br6g87SoSqPISnzM7xko8AZKA5-')">
                     </div>
                 </div>`;
+                hideLoader();
             } else {
-                // Load External App via Iframe
-                container.innerHTML = `<iframe src="${APPS[appId]}" class="w-full h-full border-0"></iframe>`;
+                container.innerHTML = `<iframe src="${APPS[appId]}" class="w-full h-full border-0" onload="hideLoader()"></iframe>`;
             }
         }
 
         // Init
-        loadApp('dashboard');
+        // Pre-load dashboard
+        setTimeout(() => loadApp('dashboard'), 100);
     </script>
 </body>
 
