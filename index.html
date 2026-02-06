@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DIGITAL EMPIRE DASHBOARD v2.0 | Owner Access</title>
+    <title>MEGA BUNDLE | Digital Empire Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,11 +12,11 @@
             --sidebar: #18181b;
             --card: #27272a;
             --hover: #3f3f46;
-            --primary: #d946ef;
+            --primary: #f59e0b;
+            --gold: #f59e0b;
+            --purple: #a855f7;
             --blue: #3b82f6;
-            --purple: #8b5cf6;
-            --red: #FF3B30;
-            --orange: #FF9500;
+            --red: #f43f5e;
             --green: #22c55e;
             --cyan: #0ea5e9;
             --text: #fafafa;
@@ -38,33 +38,43 @@
             overflow: hidden;
         }
 
-        /* Sidebar */
         .sidebar {
-            width: 260px;
+            width: 280px;
             background-color: var(--sidebar);
             padding: 20px;
             display: flex;
             flex-direction: column;
             border-right: 1px solid #333;
             flex-shrink: 0;
+            overflow-y: auto;
         }
 
         .logo {
             font-size: 1.2rem;
             font-weight: 800;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--gold), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .logo-sub {
             font-size: 0.7rem;
             color: var(--subtext);
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+        }
+
+        .pack-badge {
+            background: linear-gradient(135deg, var(--gold), var(--purple));
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
         }
 
         .menu-item {
@@ -87,7 +97,7 @@
         }
 
         .menu-item.active {
-            border-left: 3px solid var(--primary);
+            border-left: 3px solid var(--gold);
         }
 
         .menu-divider {
@@ -104,7 +114,6 @@
             margin-bottom: 10px;
         }
 
-        /* Main Content */
         .main {
             flex: 1;
             padding: 40px;
@@ -140,7 +149,7 @@
 
         .card:hover {
             transform: translateY(-3px);
-            border-color: var(--primary);
+            border-color: var(--gold);
         }
 
         .card-header {
@@ -151,8 +160,6 @@
         }
 
         .tag {
-            background: rgba(217, 70, 239, 0.2);
-            color: var(--primary);
             padding: 4px 10px;
             border-radius: 20px;
             font-size: 0.7rem;
@@ -165,13 +172,18 @@
         }
 
         .tag.red {
-            background: rgba(255, 59, 48, 0.2);
+            background: rgba(244, 63, 94, 0.2);
             color: var(--red);
         }
 
         .tag.green {
             background: rgba(34, 197, 94, 0.2);
             color: var(--green);
+        }
+
+        .tag.gold {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--gold);
         }
 
         .card h3 {
@@ -203,11 +215,20 @@
         }
 
         .btn:hover {
-            background: var(--primary);
+            background: var(--gold);
             color: white;
         }
 
-        /* Sections */
+        .btn.drive-btn {
+            background: linear-gradient(135deg, #4285f4, #34a853);
+            color: white;
+        }
+
+        .btn.drive-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(66, 133, 244, 0.3);
+        }
+
         .section {
             display: none;
             animation: fadeIn 0.3s;
@@ -229,27 +250,79 @@
             }
         }
 
-        /* ========== TOOL STYLES ========== */
+        .info-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+        }
+
+        .info-box h4 {
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .info-box p {
+            color: var(--subtext);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .resource-card {
+            background: var(--card);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .resource-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .resource-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .resource-desc {
+            color: var(--subtext);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .file-count {
+            display: inline-block;
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--green);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Tool Styles */
         .tool-container {
             background: var(--card);
             border-radius: 15px;
             padding: 30px;
             max-width: 900px;
-        }
-
-        .tool-header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .tool-header h2 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-
-        .tool-header p {
-            color: var(--subtext);
-            font-size: 0.95rem;
         }
 
         .form-group {
@@ -277,14 +350,13 @@
             color: var(--text);
             font-family: inherit;
             font-size: 1rem;
-            transition: 0.2s;
         }
 
         select:focus,
         input:focus,
         textarea:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: var(--gold);
         }
 
         .grid-2 {
@@ -294,7 +366,7 @@
         }
 
         .generate-btn {
-            background: linear-gradient(135deg, var(--primary), var(--purple));
+            background: linear-gradient(135deg, var(--gold), var(--purple));
             color: white;
             border: none;
             padding: 15px 30px;
@@ -303,8 +375,6 @@
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            transition: 0.2s;
-            box-shadow: 0 4px 15px rgba(217, 70, 239, 0.3);
         }
 
         .generate-btn:hover {
@@ -317,12 +387,9 @@
             position: relative;
         }
 
-        textarea#output,
         textarea#promptOutput {
             min-height: 200px;
             font-family: 'Consolas', monospace;
-            font-size: 0.95rem;
-            line-height: 1.6;
         }
 
         .copy-btn {
@@ -338,12 +405,6 @@
             cursor: pointer;
         }
 
-        .copy-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-
-        /* Headlines Tool */
         .headline-input-group {
             display: flex;
             gap: 10px;
@@ -355,14 +416,13 @@
         }
 
         .headline-btn {
-            background: linear-gradient(135deg, var(--red), var(--orange));
+            background: linear-gradient(135deg, var(--red), #f97316);
             color: white;
             border: none;
             padding: 12px 25px;
             border-radius: 8px;
             font-weight: 700;
             cursor: pointer;
-            white-space: nowrap;
         }
 
         .headline-list {
@@ -380,11 +440,6 @@
             justify-content: space-between;
             align-items: center;
             border-left: 3px solid var(--red);
-            transition: 0.2s;
-        }
-
-        .headline-item:hover {
-            transform: translateX(5px);
         }
 
         .headline-tag {
@@ -412,14 +467,6 @@
             color: white;
         }
 
-        /* Calculator Tool */
-        .calc-container {
-            max-width: 500px;
-            background: var(--bg);
-            border-radius: 15px;
-            padding: 25px;
-        }
-
         .calc-input-wrapper {
             position: relative;
         }
@@ -432,12 +479,12 @@
             color: var(--subtext);
         }
 
-        .calc-container input {
+        .calc-input-wrapper input {
             padding-left: 35px;
         }
 
         .calc-results {
-            background: var(--card);
+            background: var(--bg);
             border-radius: 12px;
             padding: 20px;
             margin-top: 25px;
@@ -472,29 +519,6 @@
             color: var(--green);
         }
 
-        /* Info Box */
-        .info-box {
-            background: rgba(217, 70, 239, 0.1);
-            border: 1px solid var(--primary);
-            border-radius: 10px;
-            padding: 15px 20px;
-            margin-bottom: 25px;
-        }
-
-        .info-box h4 {
-            color: var(--primary);
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .info-box p {
-            color: var(--subtext);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
         @media (max-width: 768px) {
             .sidebar {
                 display: none;
@@ -512,23 +536,22 @@
 </head>
 
 <body>
-
     <aside class="sidebar">
-        <div class="logo">⚡ EMPIRE DASH</div>
-        <div class="logo-sub">v2.0 ALL-IN-ONE EDITION</div>
+        <div class="logo">👑 MEGA BUNDLE</div>
+        <div class="logo-sub">ALL-IN-ONE DASHBOARD</div>
 
-        <div class="menu-item active" onclick="showSection('home')">🏠 Home Base</div>
+        <div class="pack-badge">👑 FULL ACCESS</div>
+
+        <div class="menu-item active" onclick="showSection('home')">🏠 Home</div>
 
         <div class="menu-divider"></div>
         <div class="menu-label">Software Tools</div>
-
         <div class="menu-item" onclick="showSection('promptBuilder')">🤖 AI Prompt Builder</div>
         <div class="menu-item" onclick="showSection('headlineGen')">📢 Headline Generator</div>
         <div class="menu-item" onclick="showSection('calculator')">📊 Course Calculator</div>
 
         <div class="menu-divider"></div>
         <div class="menu-label">Resources</div>
-
         <div class="menu-item" onclick="showSection('pack1')">📂 AI Prompts Pack</div>
         <div class="menu-item" onclick="showSection('pack2')">📂 Social Media Pack</div>
         <div class="menu-item" onclick="showSection('pack3')">📂 Educational Pack</div>
@@ -536,464 +559,304 @@
     </aside>
 
     <main class="main">
-
-        <!-- HOME SECTION -->
+        <!-- HOME -->
         <div id="home" class="section active">
-            <h1>Welcome back, Boss. 👑</h1>
-            <p class="welcome-text">Your Digital Empire Dashboard has everything you need. All tools work directly in
-                this page.</p>
+            <h1>Welcome to MEGA BUNDLE! 👑</h1>
+            <p class="welcome-text">Tienes ACCESO TOTAL a los 3 packs, todas las herramientas y bonuses exclusivos.</p>
 
             <div class="info-box">
-                <h4>✨ What's New in v2.0</h4>
-                <p>All 3 software tools are now embedded directly in this dashboard! No need to open external files.
-                    Just click on the tool in the sidebar and start using it.</p>
+                <h4>🏆 Tu Mega Bundle Incluye</h4>
+                <p>Pack 1: AI Prompts (4,000+) + Pack 2: Social Media Kit + Pack 3: Educational Resources + 3 Software
+                    Tools + Bonuses Exclusivos</p>
             </div>
 
-            <h3 style="margin-bottom: 15px; color: var(--subtext);">QUICK ACCESS</h3>
+            <h3 style="margin-bottom: 15px; color: var(--subtext);">SOFTWARE TOOLS</h3>
             <div class="grid">
                 <div class="card">
                     <div class="card-header">
                         <h3>🤖 AI Prompt Builder</h3>
-                        <span class="tag blue">SOFTWARE</span>
+                        <span class="tag blue">PACK 1</span>
                     </div>
-                    <p>Build perfect AI prompts in seconds with our structured builder.</p>
-                    <button class="btn" onclick="showSection('promptBuilder')">Launch Tool</button>
+                    <p>Construye prompts perfectos en segundos.</p>
+                    <button class="btn" onclick="showSection('promptBuilder')">Usar</button>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h3>📢 Viral Headline Generator</h3>
-                        <span class="tag red">SOFTWARE</span>
+                        <h3>📢 Viral Headlines</h3>
+                        <span class="tag red">PACK 2</span>
                     </div>
-                    <p>Generate 15+ click-worthy headlines for any topic instantly.</p>
-                    <button class="btn" onclick="showSection('headlineGen')">Launch Tool</button>
+                    <p>Genera titulares virales al instante.</p>
+                    <button class="btn" onclick="showSection('headlineGen')">Usar</button>
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h3>📊 Course ROI Calculator</h3>
-                        <span class="tag green">SOFTWARE</span>
+                        <h3>📊 Course Calculator</h3>
+                        <span class="tag green">PACK 3</span>
                     </div>
-                    <p>Calculate your potential course profits before you launch.</p>
-                    <button class="btn" onclick="showSection('calculator')">Launch Tool</button>
+                    <p>Calcula tus ganancias potenciales.</p>
+                    <button class="btn" onclick="showSection('calculator')">Usar</button>
+                </div>
+            </div>
+
+            <h3 style="margin-bottom: 15px; color: var(--subtext);">DOWNLOAD RESOURCES</h3>
+            <div class="grid">
+                <div class="card">
+                    <h3>📂 Pack 1: AI Prompts</h3>
+                    <p>4,000+ prompts profesionales</p>
+                    <button class="btn" onclick="showSection('pack1')">Ver</button>
+                </div>
+                <div class="card">
+                    <h3>📂 Pack 2: Social Media</h3>
+                    <p>Calendarios, hooks, hashtags</p>
+                    <button class="btn" onclick="showSection('pack2')">Ver</button>
+                </div>
+                <div class="card">
+                    <h3>📂 Pack 3: Educational</h3>
+                    <p>Lesson plans, templates</p>
+                    <button class="btn" onclick="showSection('pack3')">Ver</button>
+                </div>
+                <div class="card" style="border-color: var(--gold);">
+                    <div class="card-header">
+                        <h3>👑 Bonuses Exclusivos</h3>
+                        <span class="tag gold">EXCLUSIVE</span>
+                    </div>
+                    <p>Solo para MEGA BUNDLE</p>
+                    <button class="btn" onclick="showSection('bonuses')">Ver</button>
                 </div>
             </div>
         </div>
 
-        <!-- ========== AI PROMPT BUILDER TOOL ========== -->
+        <!-- PROMPT BUILDER -->
         <div id="promptBuilder" class="section">
             <h1>🤖 AI Prompt Builder Pro</h1>
-            <p class="welcome-text">Architect the perfect prompt in seconds. Stop guessing.</p>
-
+            <p class="welcome-text">Construye el prompt perfecto en segundos.</p>
             <div class="tool-container">
                 <div class="grid-2">
                     <div class="form-group">
-                        <label>👽 1. Role / Persona</label>
+                        <label>👽 1. Rol</label>
                         <select id="role">
                             <option value="Expert Copywriter">Expert Copywriter</option>
                             <option value="Senior Software Engineer">Senior Software Engineer</option>
                             <option value="Marketing Strategist">Marketing Strategist</option>
-                            <option value="Data Analyst">Data Analyst</option>
-                            <option value="Creative Writer">Creative Writer</option>
                             <option value="Business Consultant">Business Consultant</option>
                             <option value="SEO Specialist">SEO Specialist</option>
-                            <option value="Social Media Manager">Social Media Manager</option>
-                            <option value="Teacher / Professor">Teacher / Professor</option>
-                            <option value="Financial Advisor">Financial Advisor</option>
                         </select>
                     </div>
-
                     <div class="form-group">
-                        <label>🎭 2. Tone of Voice</label>
+                        <label>🎭 2. Tono</label>
                         <select id="tone">
-                            <option value="Professional & Authoritative">Professional & Authoritative</option>
-                            <option value="Casual & Friendly">Casual & Friendly</option>
-                            <option value="Persuasive & High Energy">Persuasive & High Energy</option>
-                            <option value="Technical & Precise">Technical & Precise</option>
-                            <option value="Empathetic & Supportive">Empathetic & Supportive</option>
-                            <option value="Witty & Humorous">Witty & Humorous</option>
-                            <option value="Luxury & Elegant">Luxury & Elegant</option>
+                            <option value="Professional">Profesional</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Persuasive">Persuasivo</option>
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label>🎯 3. The Task (What do you want?)</label>
-                    <textarea id="task" rows="3"
-                        placeholder="e.g., Write a 5-email welcome sequence for a yoga studio..."></textarea>
+                    <label>🎯 3. Tarea</label>
+                    <textarea id="task" rows="3" placeholder="¿Qué quieres que haga la IA?"></textarea>
                 </div>
-
                 <div class="form-group">
-                    <label>📝 4. Context / Constraints</label>
-                    <textarea id="context" rows="2"
-                        placeholder="e.g., Target audience is busy moms. Emails should be under 200 words."></textarea>
+                    <label>📝 4. Contexto</label>
+                    <textarea id="context" rows="2" placeholder="Contexto adicional..."></textarea>
                 </div>
-
-                <div class="form-group">
-                    <label>📦 5. Output Format</label>
-                    <select id="format">
-                        <option value="Normal Text">Normal Text</option>
-                        <option value="Markdown Table">Markdown Table</option>
-                        <option value="Bullet Points">Bullet Points</option>
-                        <option value="Code Block">Code Block</option>
-                        <option value="Step-by-Step Guide">Step-by-Step Guide</option>
-                        <option value="JSON Format">JSON Format</option>
-                        <option value="Script Format">Script Format</option>
-                    </select>
-                </div>
-
-                <button class="generate-btn" onclick="generatePrompt()">🚀 GENERATE PERFECT PROMPT</button>
-
+                <button class="generate-btn" onclick="generatePrompt()">🚀 GENERAR PROMPT</button>
                 <div class="result-area">
-                    <button class="copy-btn" onclick="copyPrompt()">Copy</button>
-                    <textarea id="promptOutput" readonly
-                        placeholder="Your engineered prompt will appear here..."></textarea>
+                    <button class="copy-btn" onclick="copyPrompt()">Copiar</button>
+                    <textarea id="promptOutput" readonly placeholder="Tu prompt aparecerá aquí..."></textarea>
                 </div>
             </div>
         </div>
 
-        <!-- ========== VIRAL HEADLINE GENERATOR TOOL ========== -->
+        <!-- HEADLINE GEN -->
         <div id="headlineGen" class="section">
             <h1>📢 Viral Headline Generator</h1>
-            <p class="welcome-text">Enter your topic and get 15+ click-worthy headlines instantly.</p>
-
+            <p class="welcome-text">Genera titulares irresistibles al instante.</p>
             <div class="tool-container">
                 <div class="headline-input-group">
-                    <input type="text" id="topicInput"
-                        placeholder="Enter topic (e.g. 'Vegan Diet', 'Bitcoin', 'Remote Work')..."
-                        onkeypress="handleHeadlineEnter(event)">
-                    <button class="headline-btn" onclick="generateHeadlines()">GENERATE</button>
+                    <input type="text" id="topicInput" placeholder="Ingresa un tema..."
+                        onkeypress="if(event.key==='Enter')generateHeadlines()">
+                    <button class="headline-btn" onclick="generateHeadlines()">GENERAR</button>
                 </div>
-
-                <ul class="headline-list" id="headlineList">
-                    <!-- Headlines appear here -->
-                </ul>
+                <ul class="headline-list" id="headlineList"></ul>
             </div>
         </div>
 
-        <!-- ========== COURSE CALCULATOR TOOL ========== -->
+        <!-- CALCULATOR -->
         <div id="calculator" class="section">
             <h1>📊 Course Income Calculator</h1>
-            <p class="welcome-text">Plan your launch. Visualize your profit.</p>
-
-            <div class="tool-container">
-                <div class="calc-container">
-                    <div class="form-group">
-                        <label>💰 Price per Student / Course</label>
-                        <div class="calc-input-wrapper">
-                            <span class="calc-symbol">$</span>
-                            <input type="number" id="price" value="97" oninput="calculate()">
-                        </div>
+            <p class="welcome-text">Calcula tus ganancias potenciales.</p>
+            <div class="tool-container" style="max-width: 500px;">
+                <div class="form-group">
+                    <label>💰 Precio por Estudiante</label>
+                    <div class="calc-input-wrapper">
+                        <span class="calc-symbol">$</span>
+                        <input type="number" id="price" value="97" oninput="calculate()">
                     </div>
-
-                    <div class="form-group">
-                        <label>👥 Number of Students (Est.)</label>
-                        <div class="calc-input-wrapper">
-                            <span class="calc-symbol">#</span>
-                            <input type="number" id="students" value="20" oninput="calculate()">
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label>👥 Número de Estudiantes</label>
+                    <div class="calc-input-wrapper">
+                        <span class="calc-symbol">#</span>
+                        <input type="number" id="students" value="20" oninput="calculate()">
                     </div>
-
-                    <div class="form-group">
-                        <label>📉 Expenses (Ads, Hosting, Software)</label>
-                        <div class="calc-input-wrapper">
-                            <span class="calc-symbol">$</span>
-                            <input type="number" id="expenses" value="50" oninput="calculate()">
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label>📉 Gastos</label>
+                    <div class="calc-input-wrapper">
+                        <span class="calc-symbol">$</span>
+                        <input type="number" id="expenses" value="50" oninput="calculate()">
                     </div>
-
-                    <div class="calc-results">
-                        <div class="calc-row">
-                            <div class="calc-label">Total Revenue</div>
-                            <div class="calc-value" id="revenue">$1,940.00</div>
-                        </div>
-                        <div class="calc-row">
-                            <div class="calc-label">Net Profit</div>
-                            <div class="calc-value profit" id="profit">$1,890.00</div>
-                        </div>
+                </div>
+                <div class="calc-results">
+                    <div class="calc-row">
+                        <div class="calc-label">Ingresos</div>
+                        <div class="calc-value" id="revenue">$1,940.00</div>
+                    </div>
+                    <div class="calc-row">
+                        <div class="calc-label">Ganancia</div>
+                        <div class="calc-value profit" id="profit">$1,890.00</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- PACK 1 SECTION -->
+        <!-- PACK 1 -->
         <div id="pack1" class="section">
             <h1>📂 Pack 1: AI Prompts</h1>
-            <p class="welcome-text">Access your 4,000+ prompt library and resources.</p>
-            <div style="text-align:center; margin-bottom: 30px;">
-                <a href="https://drive.google.com/open?id=1kGFg1Br6g87SoSqPISnzM7xko8AZKA5-" target="_blank"
-                    class="generate-btn"
-                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS PACK
-                    1 (AI Prompts)</a>
-            </div>
-            <div class="grid">
-                <div class="card">
-                    <h3>📄 Prompt Library</h3>
-                    <p>Open the PACK_1_AI_PROMPTS folder to access all 4,000+ prompts organized by category.</p>
-                </div>
-                <div class="card">
-                    <h3>📖 Bonus: 50 Prompt Formulas</h3>
-                    <p>Reusable templates you can customize for any situation.</p>
-                </div>
-                <div class="card">
-                    <h3>🎓 Masterclass</h3>
-                    <p>Learn the art of prompting with our comprehensive guide.</p>
+            <p class="welcome-text">4,000+ prompts profesionales organizados por categoría.</p>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">🤖</div>
+                    <div class="resource-title">AI Prompts Library</div>
+                    <div class="file-count">4,000+ Prompts</div>
+                    <div class="resource-desc">Business, Marketing, Writing, Coding, Creative y más.</div>
+                    <a href="https://drive.google.com/open?id=1kGFg1Br6g87SoSqPISnzM7xko8AZKA5-" target="_blank"
+                        class="btn drive-btn">📁 Abrir en Drive</a>
                 </div>
             </div>
         </div>
 
-        <!-- PACK 2 SECTION -->
+        <!-- PACK 2 -->
         <div id="pack2" class="section">
             <h1>📂 Pack 2: Social Media</h1>
-            <p class="welcome-text">Templates, calendars, and viral content resources.</p>
-            <div style="text-align:center; margin-bottom: 30px;">
-                <a href="https://drive.google.com/open?id=1n30js_39wYzuddhM1-a6vtorfyZz7hNQ" target="_blank"
-                    class="generate-btn"
-                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS PACK
-                    2 (Social Media)</a>
-            </div>
-            <div class="grid">
-                <div class="card">
-                    <h3>📅 30-Day Content Calendar</h3>
-                    <p>A strategic posting plan already mapped out for you.</p>
-                </div>
-                <div class="card">
-                    <h3>📝 200 Viral Hooks</h3>
-                    <p>Attention-grabbing openers for your posts.</p>
-                </div>
-                <div class="card">
-                    <h3>#️⃣ 500 Hashtags</h3>
-                    <p>Curated hashtag sets for maximum reach.</p>
+            <p class="welcome-text">Calendarios, hooks, hashtags y templates.</p>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📱</div>
+                    <div class="resource-title">Social Media Kit</div>
+                    <div class="file-count">Todo Incluido</div>
+                    <div class="resource-desc">30-Day Calendar, 200 Hooks, 500 Hashtags, Templates.</div>
+                    <a href="https://drive.google.com/open?id=1n30js_39wYzuddhM1-a6vtorfyZz7hNQ" target="_blank"
+                        class="btn drive-btn">📁 Abrir en Drive</a>
                 </div>
             </div>
         </div>
 
-        <!-- PACK 3 SECTION -->
+        <!-- PACK 3 -->
         <div id="pack3" class="section">
             <h1>📂 Pack 3: Educational</h1>
-            <p class="welcome-text">Resources for teachers, educators, and course creators.</p>
-            <div style="text-align:center; margin-bottom: 30px;">
-                <a href="https://drive.google.com/open?id=1P92PpSc2S6aRIZMiklceYYLkWZ_w7jOX" target="_blank"
-                    class="generate-btn"
-                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS PACK
-                    3 (Educational)</a>
-            </div>
-            <div class="grid">
-                <div class="card">
-                    <h3>📋 Lesson Plans</h3>
-                    <p>Ready-to-use lesson plan templates and frameworks.</p>
-                </div>
-                <div class="card">
-                    <h3>✅ Assessment Guide</h3>
-                    <p>Comprehensive guide for creating student assessments.</p>
-                </div>
-                <div class="card">
-                    <h3>📬 Parent Letters</h3>
-                    <p>Professional templates for parent communication.</p>
+            <p class="welcome-text">Recursos para educadores y creadores de cursos.</p>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">🎓</div>
+                    <div class="resource-title">Educational Resources</div>
+                    <div class="file-count">Todo Incluido</div>
+                    <div class="resource-desc">Lesson Plans, Assessment Guides, Templates.</div>
+                    <a href="https://drive.google.com/open?id=1P92PpSc2S6aRIZMiklceYYLkWZ_w7jOX" target="_blank"
+                        class="btn drive-btn">📁 Abrir en Drive</a>
                 </div>
             </div>
         </div>
 
-        <!-- BONUSES SECTION -->
+        <!-- BONUSES -->
         <div id="bonuses" class="section">
             <h1>👑 Exclusive Bonuses</h1>
-            <p class="welcome-text">Premium strategies and guides for MEGA BUNDLE owners only.</p>
-            <div style="text-align:center; margin-bottom: 30px;">
-                <a href="https://drive.google.com/open?id=1CZ8QvqQl2MqcWXzSbvZfwEcaQ54bgKxZ" target="_blank"
-                    class="generate-btn"
-                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
-                    BONUSES (Strategies)</a>
+            <p class="welcome-text">Recursos exclusivos SOLO para MEGA BUNDLE owners.</p>
+            <div class="info-box">
+                <h4>🏆 Contenido Exclusivo</h4>
+                <p>Estos recursos adicionales solo están disponibles para quienes compraron el Mega Bundle completo.</p>
             </div>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>💰 Combo Strategies</h3>
-                        <span class="tag">EXCLUSIVE</span>
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">💰</div>
+                    <div class="resource-title">Combo Strategies & Bonuses</div>
+                    <div class="file-count">EXCLUSIVO</div>
+                    <div class="resource-desc">Estrategias secretas, guías de automatización, y más recursos premium.
                     </div>
-                    <p>The SECRET guide to combining all 3 packs for maximum profit.</p>
-                    <p style="font-size: 0.8rem;">Open EXCLUSIVE_Combo_Strategies.txt in this folder.</p>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h3>🤖 Automation Guide</h3>
-                        <span class="tag">EXCLUSIVE</span>
-                    </div>
-                    <p>How to run your business on autopilot using these tools.</p>
-                    <p style="font-size: 0.8rem;">Open EXCLUSIVE_Automation_Guide.txt in this folder.</p>
+                    <a href="https://drive.google.com/open?id=1CZ8QvqQl2MqcWXzSbvZfwEcaQ54bgKxZ" target="_blank"
+                        class="btn drive-btn">📁 Abrir en Drive</a>
                 </div>
             </div>
         </div>
-
     </main>
 
     <script>
-        // ========== NAVIGATION ==========
         function showSection(id) {
             document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.menu-item').forEach(el => el.classList.remove('active'));
-
             document.getElementById(id).classList.add('active');
-
-            const menuMap = {
-                'home': 0,
-                'promptBuilder': 3,
-                'headlineGen': 4,
-                'calculator': 5,
-                'pack1': 7,
-                'pack2': 8,
-                'pack3': 9,
-                'bonuses': 10
-            };
-            const menuItems = document.querySelectorAll('.menu-item');
-            if (menuMap[id] !== undefined && menuItems[menuMap[id]]) {
-                menuItems[menuMap[id]].classList.add('active');
-            }
+            event.target.closest('.menu-item')?.classList.add('active');
         }
 
-        // ========== PROMPT BUILDER ==========
-        // ========== ADVANCED PROMPT ENGINEER LOGIC ==========
-        const ROLE_DEFINITIONS = {
-            "Expert Copywriter": "Act as a World-Class Direct Response Copywriter with 20 years of experience. You specialize in high-converting copy, psychological triggers, and persuasive storytelling.",
-            "Senior Software Engineer": "Act as a Distinguished Software Architect. You have deep expertise in clean code, design patterns, algorithmic optimization, and scalable systems.",
-            "Marketing Strategist": "Act as a Chief Marketing Officer (CMO). You are an expert in full-funnel strategy, brand positioning, growth hacking, and market analysis.",
-            "Data Analyst": "Act as a Lead Data Scientist. You excel at statistical analysis, data visualization, identifying patterns, and driving business decisions through data.",
-            "Creative Writer": "Act as a Best-Selling Author. You have a mastery of narrative structure, character development, vivid imagery, and engaging prose.",
-            "Business Consultant": "Act as a MBB (McKinsey/Bain/BCG) level Management Consultant. You are an expert in problem-solving, corporate strategy, operational efficiency, and profitability.",
-            "SEO Specialist": "Act as a Senior SEO Strategist. You are an expert in technical SEO, keyword research, on-page optimization, and authority building.",
-            "Social Media Manager": "Act as a Viral Content Director. You understand algorithms, engagement metrics, community building, and trend analysis.",
-            "Teacher / Professor": "Act as a Tenured Professor and Pedagogy Expert. You are skilled in curriculum design, simplifying complex topics, and student engagement.",
-            "Financial Advisor": "Act as a Certified Financial Planner (CFP). You provide prudent, legally compliant, and strategic financial advice focused on wealth preservation and growth."
-        };
-
         function generatePrompt() {
-            const roleKey = document.getElementById('role').value;
+            const role = document.getElementById('role').value;
             const tone = document.getElementById('tone').value;
             const task = document.getElementById('task').value;
             const context = document.getElementById('context').value;
-            const format = document.getElementById('format').value;
-
-            if (!task) {
-                alert("Please enter a task!");
-                return;
-            }
-
-            const roleDescription = ROLE_DEFINITIONS[roleKey] || `Act as a ${roleKey}.`;
-
-            // THE MEGA PROMPT STRUCTURE
-            const prompt =
-                `# SYSTEM ROLE
-${roleDescription}
-
-# YOUR TASK
-${task}
-
-# CONTEXT & CONSTRAINTS
-${context || "No specific constraints provided. Use your best professional judgment."}
-
-# TONE GUIDELINES
-Maintain a tone that is: ${tone}.
-Ensure the language is precise, impactful, and aligned with the persona above.
-
-# OUTPUT FORMAT
-${format}
-
-# CHAIN OF THOUGHT (Step-by-Step)
-1. Analyze the Request: Understand the core goal and target audience.
-2. Outline Strategy: Plan the structure of the response.
-3. Draft Content: Create the content using the specific tone and expertise required.
-4. Refine: Review against constraints and optimize for quality.
-
-Take a deep breath and start now.`;
-
+            if (!task) { alert("Por favor ingresa una tarea!"); return; }
+            const prompt = `Act as a ${role}.\n\nTASK:\n${task}\n\n` +
+                (context ? `CONTEXT:\n${context}\n\n` : '') +
+                `TONE: ${tone}\n\nTake a deep breath and do this step-by-step.`;
             document.getElementById('promptOutput').value = prompt;
         }
 
         function copyPrompt() {
-            const output = document.getElementById('promptOutput');
-            output.select();
+            document.getElementById('promptOutput').select();
             document.execCommand('copy');
-            const btn = document.querySelector('.result-area .copy-btn');
-            btn.innerText = 'Copied!';
-            setTimeout(() => btn.innerText = 'Copy', 2000);
+            document.querySelector('.copy-btn').innerText = '¡Copiado!';
+            setTimeout(() => document.querySelector('.copy-btn').innerText = 'Copiar', 2000);
         }
 
-        // ========== HEADLINE GENERATOR ==========
         const headlineTemplates = [
-            { type: "How To", text: "How to Master [TOPIC] in 30 Days" },
-            { type: "Mistake", text: "3 Mistakes You're Making With [TOPIC]" },
-            { type: "List", text: "10 [TOPIC] Secrets Nobody Tells You" },
-            { type: "Question", text: "Is [TOPIC] Dead? Read This Before You Decide" },
-            { type: "Guide", text: "The Ultimate Guide to [TOPIC] for Beginners" },
-            { type: "Strong", text: "Stop Ignoring [TOPIC]. It Could Change Everything." },
-            { type: "Future", text: "The Future of [TOPIC]: What to Expect" },
-            { type: "Negative", text: "Why I Stopped Doing [TOPIC] (And What I Do Instead)" },
-            { type: "Hack", text: "The 5-Minute [TOPIC] Hack That Saves Hours" },
-            { type: "Money", text: "How to Monetize [TOPIC] Starting Today" },
-            { type: "Expert", text: "What Experts Aren't Telling You About [TOPIC]" },
-            { type: "Simple", text: "[TOPIC] Made Simple: A Step-by-Step Blueprint" },
-            { type: "Story", text: "How I Mastered [TOPIC] With No Experience" },
-            { type: "Fear", text: "Don't Try [TOPIC] Until You Read This" },
-            { type: "Compare", text: "[TOPIC] vs Competitors: The Honest Truth" }
+            { type: "Cómo", text: "Cómo Dominar [TOPIC] en 30 Días" },
+            { type: "Error", text: "3 Errores que Estás Cometiendo con [TOPIC]" },
+            { type: "Lista", text: "10 Secretos de [TOPIC] que Nadie te Cuenta" },
+            { type: "Guía", text: "La Guía Definitiva de [TOPIC]" },
+            { type: "Hack", text: "El Hack de 5 Minutos de [TOPIC]" },
+            { type: "Dinero", text: "Cómo Monetizar [TOPIC] Hoy" },
+            { type: "Experto", text: "Lo que los Expertos NO te Dicen sobre [TOPIC]" },
+            { type: "Simple", text: "[TOPIC] Simplificado: Plan Paso a Paso" }
         ];
-
-        function handleHeadlineEnter(e) {
-            if (e.key === 'Enter') generateHeadlines();
-        }
 
         function generateHeadlines() {
             const topic = document.getElementById('topicInput').value.trim();
-            if (!topic) {
-                alert("Please enter a topic!");
-                return;
-            }
-
+            if (!topic) { alert("Ingresa un tema!"); return; }
             const list = document.getElementById('headlineList');
             list.innerHTML = "";
-
             headlineTemplates.forEach(t => {
-                const filled = t.text.replaceAll("[TOPIC]", topic);
                 const li = document.createElement('li');
                 li.className = 'headline-item';
-                li.innerHTML = `
-                    <div>
-                        <span class="headline-tag">${t.type}</span>
-                        <span class="headline-text">${filled}</span>
-                    </div>
-                    <button class="headline-copy" onclick="copyHeadline(this)">Copy</button>
-                `;
+                li.innerHTML = `<div><span class="headline-tag">${t.type}</span><span class="headline-text">${t.text.replaceAll("[TOPIC]", topic)}</span></div><button class="headline-copy" onclick="copyHeadline(this)">Copiar</button>`;
                 list.appendChild(li);
             });
         }
 
         function copyHeadline(btn) {
-            const text = btn.parentElement.querySelector('.headline-text').innerText;
-            navigator.clipboard.writeText(text);
-            btn.innerText = "Copied!";
+            navigator.clipboard.writeText(btn.parentElement.querySelector('.headline-text').innerText);
+            btn.innerText = "¡Copiado!";
             btn.style.background = "#22c55e";
-            btn.style.color = "white";
-            setTimeout(() => {
-                btn.innerText = "Copy";
-                btn.style.background = "#222";
-                btn.style.color = "#a1a1aa";
-            }, 1500);
+            setTimeout(() => { btn.innerText = "Copiar"; btn.style.background = "#222"; }, 1500);
         }
 
-        // ========== CALCULATOR ==========
         function calculate() {
             const price = parseFloat(document.getElementById('price').value) || 0;
             const students = parseFloat(document.getElementById('students').value) || 0;
             const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-
             const revenue = price * students;
             const profit = revenue - expenses;
-
-            document.getElementById('revenue').innerText = formatMoney(revenue);
-            document.getElementById('profit').innerText = formatMoney(profit);
+            document.getElementById('revenue').innerText = '$' + revenue.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            document.getElementById('profit').innerText = '$' + profit.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
         }
-
-        function formatMoney(amount) {
-            return '$' + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
-        }
-
-        // Init calculator
         calculate();
     </script>
 </body>
