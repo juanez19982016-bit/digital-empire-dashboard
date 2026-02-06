@@ -718,6 +718,11 @@
         <div id="pack1" class="section">
             <h1>📂 Pack 1: AI Prompts</h1>
             <p class="welcome-text">Access your 4,000+ prompt library and resources.</p>
+            <div style="text-align:center; margin-bottom: 30px;">
+                <a href="https://drive.google.com/" target="_blank" class="generate-btn"
+                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
+                    GOOGLE DRIVE FOLDER</a>
+            </div>
             <div class="grid">
                 <div class="card">
                     <h3>📄 Prompt Library</h3>
@@ -738,6 +743,11 @@
         <div id="pack2" class="section">
             <h1>📂 Pack 2: Social Media</h1>
             <p class="welcome-text">Templates, calendars, and viral content resources.</p>
+            <div style="text-align:center; margin-bottom: 30px;">
+                <a href="https://drive.google.com/" target="_blank" class="generate-btn"
+                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
+                    GOOGLE DRIVE FOLDER</a>
+            </div>
             <div class="grid">
                 <div class="card">
                     <h3>📅 30-Day Content Calendar</h3>
@@ -758,6 +768,11 @@
         <div id="pack3" class="section">
             <h1>📂 Pack 3: Educational</h1>
             <p class="welcome-text">Resources for teachers, educators, and course creators.</p>
+            <div style="text-align:center; margin-bottom: 30px;">
+                <a href="https://drive.google.com/" target="_blank" class="generate-btn"
+                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
+                    GOOGLE DRIVE FOLDER</a>
+            </div>
             <div class="grid">
                 <div class="card">
                     <h3>📋 Lesson Plans</h3>
@@ -778,6 +793,11 @@
         <div id="bonuses" class="section">
             <h1>👑 Exclusive Bonuses</h1>
             <p class="welcome-text">Premium strategies and guides for MEGA BUNDLE owners only.</p>
+            <div style="text-align:center; margin-bottom: 30px;">
+                <a href="https://drive.google.com/" target="_blank" class="generate-btn"
+                    style="text-decoration:none; display:inline-block; width:auto; background: #22c55e;">📂 ACCESS
+                    GOOGLE DRIVE FOLDER</a>
+            </div>
             <div class="grid">
                 <div class="card">
                     <div class="card-header">
@@ -839,7 +859,7 @@
 
             const prompt = `Act as a ${role}.\n\n` +
                 `TASK:\n${task}\n\n` +
-                (context ? `CONTEXT & CONSTRAINTS:\n${context}\n\n` : '') +
+                `CONTEXT & CONSTRAINTS:\n${context || "No specific constraints."}\n\n` +
                 `TONE:\n${tone}\n\n` +
                 `OUTPUT FORMAT:\n${format}\n\n` +
                 `Take a deep breath and do this step-by-step to ensure high quality.`;
